@@ -1,10 +1,6 @@
-\c template_test_dev;
+\c room_booking;
 
-INSERT INTO test (name) VALUES
-('Monday'),
-('Tuesday'),
-('Wednesday'),
-('Thursday'),
-('Friday'),
-('Saturday'),
-('Sunday');
+INSERT INTO MeetingRoom (Name, Capacity, Floor) VALUES
+('Meeting Room 1', 4, 10),
+('Meeting Room 2', 6, 20),
+('Meeting Room 3', 8, 30);
