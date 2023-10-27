@@ -1,11 +1,26 @@
-DROP DATABASE IF EXISTS template_test_dev;
-CREATE DATABASE template_test_dev;
+DROP DATABASE IF EXISTS room_booking;
+CREATE DATABASE room_booking;
 
-\c template_test_dev;
+\c room_booking;
 
-DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS MeetingRoom;
 
-CREATE TABLE test (
-    id SERIAL PRIMARY KEY, 
-    name TEXT
+-- Create the MeetingRoom table
+CREATE TABLE MeetingRoom (
+    RoomId serial PRIMARY KEY, -- Identity column for room ID
+    Name VARCHAR(255) NOT NULL,
+    Capacity INT NOT NULL,
+    Floor INT NOT NULL
+);
+
+DROP TABLE IF EXISTS Booking;
+
+-- Create the Booking table
+CREATE TABLE Booking (
+    BookingId serial PRIMARY KEY, -- Identity column for booking ID
+    RoomId INT NOT NULL, -- Foreign key to MeetingRoom table
+    MeetingName VARCHAR(255) NOT NULL,
+    StartDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
+    EndDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
+    Attendees TEXT[] NOT NULL
 );

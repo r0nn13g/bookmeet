@@ -7,11 +7,13 @@ const app = express();
 
 // MIDDLEWARE
 app.use(cors());
-app.use(express.json()); // Parse incoming JSON
+
+// Parse incoming JSON
+app.use(express.json()); 
 
 // ROUTES
 app.get("/", (req, res) => {
-  res.send("Hello, world!");
+  res.send("Welcome");
 });
 
 /////////////////////////////////////
