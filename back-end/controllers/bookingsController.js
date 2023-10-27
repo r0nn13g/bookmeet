@@ -5,7 +5,7 @@ const db = require('../db/dbConfig.js');
 // List all bookings
 bookings.get('/', async (req, res) => {
   try {
-    const { rows } = await db.any('SELECT * FROM Booking');
+    const { rows } = await db.query('SELECT * FROM Booking');
     res.status(200).json(rows);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });

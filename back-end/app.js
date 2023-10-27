@@ -3,8 +3,8 @@ const cors = require("cors");
 const express = require("express");
 
 //Controllers go here -->
-const bookingsController = require("./controllers/bookingsController.js");
-const meetingRoomsController = require("./controllers/meetingRoomsController.js");
+const bookingsController = require("../controllers/bookingsController.js");
+const meetingRoomsController = require("../controllers/meetingRoomsController.js");
 
 // CONFIGURATION
 const app = express();
