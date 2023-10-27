@@ -1,6 +1,5 @@
 const express = require('express');
 const rooms = express.Router();
-// const pool = require('../db/dbConfig.js');
 const {getAllMeetingRooms, createMeetingRoom, getRoomBookings } = require("../queries/meetingRooms.js")
 
 // List all meeting rooms
@@ -24,6 +23,16 @@ rooms.post('/api/meeting-rooms', async (req, res) => {
   }
 });
 
+// View room bookings
+rooms.get('/:roomId/bookings', async (req, res) => {
+  const roomId = req.params.roomId;
+  try {
+    const roomBookings = await getRoomBookings(roomId);
+    res.status(200).json(roomBookings);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 
 module.exports = rooms;
