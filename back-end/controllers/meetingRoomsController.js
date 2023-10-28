@@ -23,8 +23,24 @@ rooms.post('/api/meeting-rooms', async (req, res) => {
   }
 });
 
+
+// Retrieve a meeting room by id
+rooms.get('/api/meeting-rooms/:id', async (req, res) => {
+  const roomId = req.params.id;
+  try {
+    const meetingRoom = await getMeetingRoomById(roomId);
+    if (meetingRoom) {
+      res.status(200).json(meetingRoom);
+    } else {
+      res.status(404).json({ error: 'Meeting room not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // View room bookings
-rooms.get('/:roomId/bookings', async (req, res) => {
+rooms.get('/api/bookings/roomId', async (req, res) => {
   const roomId = req.params.roomId;
   try {
     const roomBookings = await getRoomBookings(roomId);

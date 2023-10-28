@@ -3,7 +3,7 @@ const bookings = express.Router();
 const db = require('../db/dbConfig.js');
 
 // List all bookings
-bookings.get('/', async (req, res) => {
+bookings.get('/api/bookings', async (req, res) => {
   try {
     const { rows } = await db.query('SELECT * FROM Booking');
     res.status(200).json(rows);
@@ -13,7 +13,7 @@ bookings.get('/', async (req, res) => {
 });
 
 // Book a meeting room
-bookings.post('/', async (req, res) => {
+bookings.post('/api/bookings', async (req, res) => {
   const { RoomId, MeetingName, StartDateTime, EndDateTime, Attendees } = req.body;
   try {
     const { rows } = await db.query('INSERT INTO Booking (RoomId, MeetingName, StartDateTime, EndDateTime, Attendees) VALUES ($1, $2, $3, $4, $5) RETURNING *', [RoomId, MeetingName, StartDateTime, EndDateTime, Attendees]);
@@ -23,9 +23,11 @@ bookings.post('/', async (req, res) => {
   }
 });
 
+
+
 // Cancel booking
-bookings.delete('/:bookingId', async (req, res) => {
-  const bookingId = req.params.bookingId;
+bookings.delete('/api/bookings/:id', async (req, res) => {
+  const bookingId = req.params.id;
   try {
     const { rowCount } = await db.query('DELETE FROM Booking WHERE BookingId = $1', [bookingId]);
     if (rowCount === 0) {
