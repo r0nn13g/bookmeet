@@ -65,7 +65,7 @@ roomsRouter.get('/:id/bookings', async (req, res) => {
       // Now, retrieve future bookings for the meeting room
       const currentDate = new Date();
       const futureBookings = await getFutureBookingsForRoom(roomId, currentDate);
-
+      console.log(futureBookings);
       res.status(200).json(futureBookings);
     } else {
       res.status(404).json({ error: 'Meeting room not found' });
