@@ -21,7 +21,7 @@ const createMeetingRoom = async (name, capacity, floor) => {
 };
 
 // Function to get room bookings
-const getRoomBookings = async (roomId) => {
+const getMeetingRoomById = async (roomId) => {
   try {
     const roomBookings = await db.any('SELECT * FROM Booking WHERE RoomId = $1', roomId);
     return roomBookings;
@@ -33,5 +33,5 @@ const getRoomBookings = async (roomId) => {
 module.exports = {
   getAllMeetingRooms,
   createMeetingRoom,
-  getRoomBookings,
+  getMeetingRoomById,
 };

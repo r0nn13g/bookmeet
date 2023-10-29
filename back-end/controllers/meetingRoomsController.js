@@ -40,7 +40,7 @@ rooms.get('/api/meeting-rooms/:id', async (req, res) => {
 });
 
 // View room bookings
-rooms.get('/api/bookings/roomId', async (req, res) => {
+rooms.get('/api/bookings/:roomId', async (req, res) => {
   const roomId = req.params.roomId;
   try {
     const roomBookings = await getRoomBookings(roomId);

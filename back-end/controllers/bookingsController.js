@@ -7,6 +7,8 @@ bookings.get('/api/bookings', async (req, res) => {
   try {
     const { rows } = await db.query('SELECT * FROM Booking');
     res.status(200).json(rows);
+    console.log(res.status(200).json(rows));
+
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
