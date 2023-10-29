@@ -30,8 +30,34 @@ const getMeetingRoomById = async (roomId) => {
   }
 };
 
+// Function for fetching all bookings from the database
+const getAllBookingsFromDatabase = async () => {
+  try {
+    // retrieve all bookings from Booking table
+    const allBookings = await db.any('SELECT * FROM Booking');
+    return allBookings;
+  } catch (error) {
+    return error;
+  }
+};
+
+// Function to get future bookings for a specific meeting room
+const getFutureBookingsForRoom = async (roomId, currentDate) => {
+  try {
+    const allBookings = await getAllBookingsFromDatabase();
+    // Filter the bookings to get future bookings for the specified meeting room
+    const futureBookings = allBookings.filter((booking) => {
+      return booking.RoomId === roomId && new Date(booking.StartDateTime) >= currentDate;
+    });
+    return futureBookings;
+  } catch (error) {
+    throw error; 
+  }
+};
+
 module.exports = {
   getAllMeetingRooms,
   createMeetingRoom,
   getMeetingRoomById,
+  getFutureBookingsForRoom
 };

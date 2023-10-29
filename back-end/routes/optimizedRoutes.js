@@ -2,7 +2,7 @@ const express = require('express');
 const roomsRouter = express.Router();
 const bookingsRouter = express.Router();
 const db = require('../db/dbConfig.js');
-const { getAllMeetingRooms,createMeetingRoom, getMeetingRoomById } = require("../queries/meetingRooms.js");
+const { getAllMeetingRooms,createMeetingRoom, getMeetingRoomById, getFutureBookingsForRoom } = require("../queries/meetingRooms.js");
 const { getAllBookings, bookMeetingRoom, getBookingById, cancelBooking } = require("../queries/bookings.js");
 
 
@@ -55,6 +55,25 @@ roomsRouter.get('/:id', async (req, res) => {
 });
 
 //Retrieve all future bookings of a meeting room
+roomsRouter.get('/:id/bookings', async (req, res) => {
+  const roomId = req.params.id;
+  try {
+    // First, get the meeting room details
+    const meetingRoom = await getMeetingRoomById(roomId);
+
+    if (meetingRoom) {
+      // Now, retrieve future bookings for the meeting room
+      const currentDate = new Date();
+      const futureBookings = await getFutureBookingsForRoom(roomId, currentDate);
+
+      res.status(200).json(futureBookings);
+    } else {
+      res.status(404).json({ error: 'Meeting room not found' });
+    }
+  } catch (error) {
+    errorHandler(res, error);
+  }
+});
 
 //code here
 
@@ -98,7 +117,7 @@ bookingsRouter.post('/', async (req, res) => {
 });
 
 //Cancel a booking by id
-bookingsRouter.delete('/bookings/:id', async (req, res) => {
+bookingsRouter.delete('/:id', async (req, res) => {
   const bookingId = req.params.id;
   try {
     const { rowCount } = await db.query('DELETE FROM Booking WHERE BookingId = $1', [bookingId]);
