@@ -20,6 +20,17 @@ const bookMeetingRoom = async (RoomId, MeetingName, StartDateTime, EndDateTime, 
   }
 };
 
+//Function to get booking by id
+const getBookingById = async (BookingId) =>{
+  try {
+    const bookingById = await db.any('SELECT * FROM Booking WHERE BookingId = $1', BookingId);
+    return bookingById;
+  } catch (error) {
+    return error;
+  }
+}
+
+
 // Function to cancel a booking
 const cancelBooking = async (bookingId) => {
   try {
@@ -33,5 +44,6 @@ const cancelBooking = async (bookingId) => {
 module.exports = {
   getAllBookings,
   bookMeetingRoom,
+  getBookingById,
   cancelBooking,
 };

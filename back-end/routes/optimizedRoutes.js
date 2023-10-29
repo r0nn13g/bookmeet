@@ -2,11 +2,9 @@ const express = require('express');
 const roomsRouter = express.Router();
 const bookingsRouter = express.Router();
 const db = require('../db/dbConfig.js');
-const {
-  getAllMeetingRooms,
-  createMeetingRoom,
-  getMeetingRoomById,
-} = require("../queries/meetingRooms.js");
+const { getAllMeetingRooms,createMeetingRoom, getMeetingRoomById } = require("../queries/meetingRooms.js");
+const { getAllBookings, bookMeetingRoom, getBookingById, cancelBooking } = require("../queries/bookings.js");
+
 
 // Common error handling middleware
 function errorHandler(res, error) {
@@ -18,7 +16,9 @@ function errorHandler(res, error) {
 roomsRouter.use(express.json());
 bookingsRouter.use(express.json());
 
-// Rooms routes
+/*ROUTES*/ 
+
+// List all meeting rooms 
 roomsRouter.get('/', async (req, res) => {
   try {
     const allMeetingRooms = await getAllMeetingRooms();
@@ -28,6 +28,7 @@ roomsRouter.get('/', async (req, res) => {
   }
 });
 
+// Create a meeting room
 roomsRouter.post('/', async (req, res) => {
   const { name, capacity, floor } = req.body;
   try {
@@ -38,6 +39,7 @@ roomsRouter.post('/', async (req, res) => {
   }
 });
 
+//Retrieve a meeting room by id
 roomsRouter.get('/:id', async (req, res) => {
   const roomId = req.params.id;
   try {
@@ -52,26 +54,50 @@ roomsRouter.get('/:id', async (req, res) => {
   }
 });
 
-// Bookings routes
-bookingsRouter.get('/bookings', async (req, res) => {
+//Retrieve all future bookings of a meeting room
+
+//code here
+
+
+/*BOOKING ROUTES */
+
+//List all future bookings
+bookingsRouter.get('/', async (req, res) => {
   try {
-    const { rows } = await db.query('SELECT * FROM Booking');
-    res.status(200).json(rows);
+    const allBookings = await getAllBookings();
+    res.status(200).json(allBookings);
   } catch (error) {
     errorHandler(res, error);
   }
 });
 
-bookingsRouter.post('/bookings', async (req, res) => {
+//Retreive a booking by id
+bookingsRouter.get('/:id', async (req, res) => {
+  const bookingId = req.params.id;
+  try {
+  const booking = await getBookingById(bookingId)
+  if (booking) {
+    res.status(200).json(booking);
+  } else {
+    res.status(404).json({error: 'Meeting room not found'});
+  }
+} catch (error) {
+  errorHandler(res, error)
+}
+});
+
+// Create a booking for a meeting room
+bookingsRouter.post('/', async (req, res) => {
   const { RoomId, MeetingName, StartDateTime, EndDateTime, Attendees } = req.body;
   try {
-    const { rows } = await db.query('INSERT INTO Booking (RoomId, MeetingName, StartDateTime, EndDateTime, Attendees) VALUES ($1, $2, $3, $4, $5) RETURNING *', [RoomId, MeetingName, StartDateTime, EndDateTime, Attendees]);
-    res.status(201).json(rows[0]);
+    const newBooking = await bookMeetingRoom(RoomId, MeetingName, StartDateTime, EndDateTime, Attendees)
+    res.status(201).json(newBooking);
   } catch (error) {
     errorHandler(res, error);
   }
 });
 
+//Cancel a booking by id
 bookingsRouter.delete('/bookings/:id', async (req, res) => {
   const bookingId = req.params.id;
   try {
