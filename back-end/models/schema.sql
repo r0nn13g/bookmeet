@@ -8,20 +8,20 @@ DROP TABLE IF EXISTS MeetingRoom;
 -- Create the MeetingRoom table
 CREATE TABLE MeetingRoom (
     id SERIAL PRIMARY KEY, -- Identity column for a unique ID
-    RoomId INT NOT NULL,   -- Existing RoomId
-    Name VARCHAR(255) NOT NULL,
-    Capacity INT NOT NULL,
-    Floor INT NOT NULL
+    roomId INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    capacity INT NOT NULL,
+    floor INT NOT NULL
 );
 
 DROP TABLE IF EXISTS Booking;
 
 -- Create the Booking table
 CREATE TABLE Booking (
-    BookingId SERIAL PRIMARY KEY, -- Identity column for booking ID
-    RoomId INT NOT NULL, -- Foreign key to MeetingRoom table
-    MeetingName VARCHAR(255) NOT NULL,
-    StartDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
-    EndDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
-    Attendees TEXT[] NOT NULL
+    bookingId SERIAL PRIMARY KEY, -- Identity column for booking ID
+    roomId INT NOT NULL, -- Foreign key to MeetingRoom table
+    meetingName VARCHAR(255) NOT NULL,
+    startDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
+    endDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
+    attendees TEXT[] NOT NULL
 );

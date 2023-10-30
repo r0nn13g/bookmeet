@@ -2,7 +2,7 @@ const express = require('express');
 const roomsRouter = express.Router();
 const bookingsRouter = express.Router();
 const db = require('../dbConfig.js');
-const { getAllMeetingRooms,createMeetingRoom, getMeetingRoomById, getFutureBookingsForRoom } = require("../queries/meetingRooms.js");
+const { getAllMeetingRooms,createMeetingRoom, getOneMeeting, getFutureBookingsForRoom } = require("../queries/meetingRooms.js");
 const { getAllBookings, bookMeetingRoom, getBookingById, cancelBooking } = require("../queries/bookings.js");
 
 
@@ -30,7 +30,7 @@ roomsRouter.get('/', async (req, res) => {
 
 // Create a meeting room
 roomsRouter.post('/', async (req, res) => {
-  const { name, capacity, floor } = req.body;
+  const {name, capacity, floor} = req.body;
   try {
     const newRoom = await createMeetingRoom(name, capacity, floor);
     res.status(201).json(newRoom);
@@ -41,9 +41,9 @@ roomsRouter.post('/', async (req, res) => {
 
 //Retrieve a meeting room by id
 roomsRouter.get('/:id', async (req, res) => {
-  const roomId = req.params.id;
+  const id = req.params.id;
   try {
-    const meetingRoom = await getMeetingRoomById(roomId);
+    const meetingRoom = await getOneMeeting(id);
     if (meetingRoom) {
       res.status(200).json(meetingRoom);
     } else {

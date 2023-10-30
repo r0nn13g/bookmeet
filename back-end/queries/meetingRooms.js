@@ -3,7 +3,7 @@ const db = require("../dbConfig.js");
 // Function to get all meeting rooms
 const getAllMeetingRooms = async () => {
   try {
-    const allMeetingRooms = await db.any('SELECT * FROM MeetingRoom');
+    const allMeetingRooms = await db.any('SELECT * FROM MeetingRoom;');
     return allMeetingRooms;
   } catch (error) {
     return error;
@@ -11,19 +11,19 @@ const getAllMeetingRooms = async () => {
 };
 
 // Function to create a meeting room
-const createMeetingRoom = async (name, capacity, floor) => {
+const createMeetingRoom = async (room) => {
   try {
-    const newRoom = await db.one('INSERT INTO MeetingRoom (Name, Capacity, Floor) VALUES ($1, $2, $3) RETURNING *', [name, capacity, floor]);
+    const newRoom = await db.one('INSERT INTO MeetingRoom (name, capacity, floor) VALUES ($1, $2, $3) RETURNING *', [room.name, room.capacity, room.floor]);
     return newRoom;
   } catch (error) {
     return error;
   }
 };
 
-// Function to get room bookings
-const getMeetingRoomById = async (roomId) => {
+// Function to get room byId
+const getOneMeeting = async (id) => {
   try {
-    const roomBookings = await db.any('SELECT * FROM Booking WHERE RoomId = $1', roomId);
+    const roomBookings = await db.any('SELECT * FROM MeetingRoom WHERE id = $1', id);
     return roomBookings;
   } catch (error) {
     return error;
@@ -47,7 +47,7 @@ const getFutureBookingsForRoom = async (roomId, currentDate) => {
     const allBookings = await getAllBookingsFromDatabase();
     // Filter the bookings to get future bookings for the specified meeting room
     const futureBookings = allBookings.filter((booking) => {
-      return booking.RoomId === roomId && new Date(booking.StartDateTime) >= currentDate;
+      return booking.roomId === roomId && new Date(booking.StartDateTime) >= currentDate;
     });
     return futureBookings;
   } catch (error) {
@@ -58,6 +58,6 @@ const getFutureBookingsForRoom = async (roomId, currentDate) => {
 module.exports = {
   getAllMeetingRooms,
   createMeetingRoom,
-  getMeetingRoomById,
+  getOneMeeting,
   getFutureBookingsForRoom
 };
