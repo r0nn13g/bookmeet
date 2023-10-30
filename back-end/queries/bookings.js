@@ -1,4 +1,4 @@
-const db = require("../models/dbConfig.js");
+const db = require("../dbConfig.js");
 
 // Function to get all bookings
 const getAllBookings = async () => {
