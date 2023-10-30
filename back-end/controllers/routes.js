@@ -1,7 +1,7 @@
 const express = require('express');
 const roomsRouter = express.Router();
 const bookingsRouter = express.Router();
-const db = require('../db/dbConfig.js');
+const db = require('../models/dbConfig.js');
 const { getAllMeetingRooms,createMeetingRoom, getMeetingRoomById, getFutureBookingsForRoom } = require("../queries/meetingRooms.js");
 const { getAllBookings, bookMeetingRoom, getBookingById, cancelBooking } = require("../queries/bookings.js");
 
@@ -120,11 +120,12 @@ bookingsRouter.post('/', async (req, res) => {
 bookingsRouter.delete('/:id', async (req, res) => {
   const bookingId = req.params.id;
   try {
-    const { rowCount } = await db.query('DELETE FROM Booking WHERE BookingId = $1', [bookingId]);
-    if (rowCount === 0) {
-      res.status(404).json({ message: 'Booking not found' });
-    } else {
+    const canceled = await cancelBooking(bookingId);
+
+    if (canceled) {
       res.status(204).send();
+    } else {
+      res.status(404).json({ message: 'Booking not found' });
     }
   } catch (error) {
     errorHandler(res, error);
