@@ -1,0 +1,44 @@
+.meeting-rooms-wrapper{
+  display: grid;
+  grid-template-areas:
+  "description description"
+    "capacity floors";
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: rgb(54, 54, 54);
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+
+.meeting-rooms-desc-container{
+  grid-area: description;
+  padding: 5px;
+  border-bottom: 2px solid gray;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.meeting-rooms-capacity-container{
+  grid-area: capacity;
+  padding: 5px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+#meeting-room-capacity{
+  margin:6px;
+  padding-bottom: 20px;
+}
+
+.meeting-rooms-floor-container{
+  grid-area: floors;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+#meeting-room-floors{
+  margin:6px;
+  padding-bottom: 20px;
+}
