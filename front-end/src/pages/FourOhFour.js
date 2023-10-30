@@ -4,7 +4,7 @@ import React from "react";
 const FourOhFour = () => {
   return (
     <div>
-      FourOhFour
+      404 Page does not exist.
     </div>
   )
 };
