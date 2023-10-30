@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS MeetingRoom;
 
 -- Create the MeetingRoom table
 CREATE TABLE MeetingRoom (
-    id serial PRIMARY KEY, -- Identity column for a unique ID
+    id SERIAL PRIMARY KEY, -- Identity column for a unique ID
     RoomId INT NOT NULL,   -- Existing RoomId
     Name VARCHAR(255) NOT NULL,
     Capacity INT NOT NULL,
