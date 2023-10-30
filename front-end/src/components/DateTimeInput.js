@@ -5,7 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimeField } from '@mui/x-date-pickers/DateTimeField';
 
-const BookRooms = () => {
+const DateTimeInput = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
     <DemoContainer components={['DateTimeField']}>
@@ -15,4 +15,4 @@ const BookRooms = () => {
   )
 };
 
-export default BookRooms;
+export default DateTimeInput;

@@ -7,6 +7,8 @@ const Home = () => {
   return (
     <div className="home-wrapper">
       <ButtonsGrouped />
+      <div className="meeting-rooms-search">
+      </div>
       <div className="meeting-room-container">
         <MeetingRooms />
       </div>
