@@ -11,7 +11,7 @@ app.use(express.json());
 
 // ROUTES
 app.get("/", (req, res) => {
-  res.send("Blackstone booking app");
+  res.send("booking app take home challenge");
 });
 
 // Use the router objects
