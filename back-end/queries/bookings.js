@@ -30,7 +30,6 @@ const getBookingById = async (BookingId) =>{
   }
 }
 
-
 // Function to cancel a booking
 const cancelBooking = async (bookingId) => {
   try {

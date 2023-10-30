@@ -59,7 +59,7 @@ roomsRouter.get('/:id/bookings', async (req, res) => {
   const roomId = req.params.id;
   try {
     // First, get the meeting room details
-    const meetingRoom = await getMeetingRoomById(roomId);
+    const meetingRoom = await getOneMeeting(roomId);
 
     if (meetingRoom) {
       // Now, retrieve future bookings for the meeting room
@@ -74,9 +74,6 @@ roomsRouter.get('/:id/bookings', async (req, res) => {
     errorHandler(res, error);
   }
 });
-
-//code here
-
 
 /*BOOKING ROUTES */
 
