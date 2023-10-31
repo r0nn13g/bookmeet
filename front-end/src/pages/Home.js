@@ -8,8 +8,10 @@ const Home = () => {
     <div className="home-wrapper">
       <ButtonsGrouped />
       <div className="meeting-rooms-search">
+      Welcome to BookMeet
       </div>
       <div className="meeting-room-container">
+        Available Rooms
         <MeetingRooms />
       </div>
     </div>
