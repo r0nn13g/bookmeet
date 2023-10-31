@@ -1,1 +1,1 @@
-# BLACKSTONE TAKE HOME ASSESMENT
+#Take home asessment
