@@ -21,5 +21,5 @@ CREATE TABLE Booking (
     meetingRoomId INT REFERENCES MeetingRoom(id),
     meetingName VARCHAR(255) NOT NULL,
     startDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
-    endDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
+    endDateTime TIMESTAMP WITH TIME ZONE NOT NULL
 );

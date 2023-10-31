@@ -13,7 +13,7 @@ const getAllBookings = async () => {
 // Function to book a meeting room
 const bookMeetingRoom = async ( meetingName, startDateTime, endDateTime) => {
   try {
-    const newBooking = await db.one('INSERT INTO Booking (meetingName,startdatetime, EndDateTime) VALUES ($1, $2, $3) RETURNING *', [meetingName,startDateTime, endDateTime]);
+    const newBooking = await db.one('INSERT INTO Booking (meetingName, startdatetime, endDateTime) VALUES ($1, $2, $3) RETURNING *', [meetingName,startDateTime, endDateTime]);
     return newBooking;
   } catch (error) {
     return error;
