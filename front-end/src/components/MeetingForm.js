@@ -1,59 +1,88 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import '../styles/meeting-forms-styles.css';
 
-class MeetingForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      meetingname: 'Team Meeting',
-      startdatetime: '2023-10-28T13:00:00.000Z',
-      enddatetime: '2023-10-28T14:00:00.000Z',
-    };
-  }
+const MeetingForm = () => {
+  const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
+  const [booking, setBooking] =  useState({
+    meetingname: "",
+    startdatetime: "",
+    enddatetime: "",
+  });
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setBooking({ ...booking, [e.target.name]: e.target.value });
   };
 
-  render() {
-    return (
-      <div className="form">
-        <h1>Book Meeting Room</h1>
-        <form>
-          <div>
-            <label>Meeting Name:</label>
-            <input
-              type="text"
-              name="meetingname"
-              value={this.state.meetingname}
-              onChange={this.handleChange}
-            />
-          </div>
+  const formatDateTime = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    return `${formattedHours}:${formattedMinutes} ${ampm}`;
+  };
 
-          <div>
-            <label>Start:</label>
-            <input
-              type="datetime-local"
-              name="startdatetime"
-              value={this.state.startdatetime}
-              onChange={this.handleChange}
-            />
-          </div>
+  const addBooking = (newBooking) => {
+    // Format the date and time fields before sending them to the API
+    const formattedBooking = {
+      ...newBooking,
+      startdatetime: formatDateTime(newBooking.startdatetime),
+      enddatetime: formatDateTime(newBooking.enddatetime),
+    };
 
-          <div>
-            <label>End:</label>
-            <input
-              type="datetime-local"
-              name="enddatetime"
-              value={this.state.enddatetime}
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <button type="submit">Create Meeting</button>
-        </form>
-      </div>
-    );
+    axios.post(`${API}/bookings`, formattedBooking)
+      .then(() => navigate("/bookings"));
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addBooking(booking);
+    console.log(booking.meetingname)
+  };
+
+  return (
+    <div className="meeting-forms-wrapper">
+      <h1>Book Meeting Room</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="meeting-name-forms">
+          <label>Meeting Name:</label>
+          <input
+            type="text"
+            name="meetingname"
+            value={booking.meetingname}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="meeting-start-time-forms">
+          <label>Start:</label>
+          <input
+            type="datetime-local"
+            name="startdatetime"
+            value={booking.startdatetime}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="meeting-end-time-forms">
+          <label>End:</label>
+          <input
+            type="datetime-local"
+            name="enddatetime"
+            value={booking.enddatetime}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button type="submit">Create Meeting</button>
+      </form>
+    </div>
+  );
 }
 
 export default MeetingForm;

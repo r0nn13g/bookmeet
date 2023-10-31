@@ -22,5 +22,4 @@ CREATE TABLE Booking (
     meetingName VARCHAR(255) NOT NULL,
     startDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
     endDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
-    attendees TEXT[] NOT NULL
 );
