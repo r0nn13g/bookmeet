@@ -54,6 +54,7 @@ roomsRouter.get('/:id', async (req, res) => {
   }
 });
 
+
 //Retrieve all future bookings of a meeting room
 roomsRouter.get('/:id/bookings', async (req, res) => {
   const roomId = req.params.id;
@@ -112,6 +113,7 @@ bookingsRouter.post('/', async (req, res) => {
     errorHandler(res, error);
   }
 });
+
 
 //Cancel a booking by id
 bookingsRouter.delete('/:id', async (req, res) => {

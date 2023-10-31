@@ -20,8 +20,8 @@ const MeetingRooms = () => {
   return (
     <>
       {meetings.map((meeting) => (
-        <MeetingRoomCard key={meeting.roomid} meeting={meeting} />
-      ))}
+        <MeetingRoomCard key={meeting.id} meeting={meeting} />
+        ))}
     </>
   );
 };

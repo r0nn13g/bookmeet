@@ -31,10 +31,10 @@ const getOneMeeting = async (id) => {
 };
 
 // Function for fetching all bookings from the database
-const getAllBookingsFromDatabase = async () => {
+const getAllBookingsForARoom = async (RoomId) => {
   try {
     // retrieve all bookings from Booking table
-    const allBookings = await db.any('SELECT * FROM Booking');
+    const allBookings = await db.any('SELECT * FROM Booking WHERE meetingRoomId = $1', RoomId);
     return allBookings;
   } catch (error) {
     return error;
@@ -44,10 +44,10 @@ const getAllBookingsFromDatabase = async () => {
 // Function to get future bookings for a specific meeting room
 const getFutureBookingsForRoom = async (roomId, currentDate) => {
   try {
-    const allBookings = await getAllBookingsFromDatabase();
+    const allBookings = await getAllBookingsForARoom(roomId);
     // Filter the bookings to get future bookings for the specified meeting room
     const futureBookings = allBookings.filter((booking) => {
-      return booking.roomId === roomId && new Date(booking.StartDateTime) >= currentDate;
+      return booking.meetingRoomId === roomId && new Date(booking.StartDateTime) >= currentDate;
     });
     return futureBookings;
   } catch (error) {

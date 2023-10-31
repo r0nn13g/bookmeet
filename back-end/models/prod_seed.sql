@@ -1,5 +1,3 @@
-\c room_booking;
-
 INSERT INTO MeetingRoom (Name, Capacity, Floor) VALUES
 ('Meeting Room 1', 4, 10),
 ('Conference Room A', 10, 20),

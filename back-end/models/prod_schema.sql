@@ -1,10 +1,5 @@
-DROP DATABASE IF EXISTS room_booking;
-CREATE DATABASE room_booking;
-
-\c room_booking;
-
--- DROP TABLE IF EXISTS MeetingRoom;
--- DROP TABLE IF EXISTS Booking;
+DROP TABLE IF EXISTS MeetingRoom;
+DROP TABLE IF EXISTS Booking;
 
 -- Create the MeetingRoom table
 CREATE TABLE MeetingRoom (

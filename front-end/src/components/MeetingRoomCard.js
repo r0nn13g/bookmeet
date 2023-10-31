@@ -5,7 +5,7 @@ import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 
 const MeetingRoomCard = ({ meeting }) => {
   return (
-    <Link className="meeting-room-link" to={`/meeting-rooms/${meeting.roomid}`}>
+    <Link className="meeting-room-link" to={`/meeting-rooms/${meeting.id}`}>
       <div className="meeting-rooms-wrapper">
         <div className="meeting-rooms-desc-container">
           <b id="meeting-room-desc">{meeting.name}</b>
