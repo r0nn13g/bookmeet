@@ -18,3 +18,15 @@
   margin: 10px;
 
 }
+
+.last-two-bookings-container{
+  margin: 10px;
+  border: 2px solid white;
+  background-color: rgb(51, 51, 51);
+  border-radius: 10px;
+}
+
+.last-two-meeting-names{
+  border-bottom: 2px solid white;
+  margin: 10px;
+}

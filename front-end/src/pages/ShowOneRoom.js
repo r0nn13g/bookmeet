@@ -7,7 +7,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 // import MeetingRooms from "../components/MeetingRooms";
 import ButtonsGrouped from "../components/ButtonsGrouped";
-import MeetingForm from "../components/MeetingForm";
+import BookingForm from "../components/BookingForm";
 
 //importing environmental variable
 const API = process.env.REACT_APP_API_URL;
@@ -53,7 +53,7 @@ const ShowOneRoom = () => {
                 </div>
                     )
                   })}
-                  <MeetingForm/>     
+                  <BookingForm/>     
                   </>
               )
 };

@@ -1,13 +1,13 @@
 import React from "react";
 // import "../styles/video-styles.css";
 import ButtonsGrouped from "../components/ButtonsGrouped";
-import MeetingRooms from "../components/MeetingRooms";
+import GetMeetings from "../components/GetMeetings.js";
 
 const ShowRooms = () => {
   return (
     <div>
       <ButtonsGrouped />
-      <MeetingRooms />
+      <GetMeetings />
     </div>
   )
 };

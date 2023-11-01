@@ -18,7 +18,7 @@ CREATE TABLE MeetingRoom (
 -- Create the Booking table
 CREATE TABLE Booking (
     bookingId SERIAL PRIMARY KEY, -- Identity column for booking ID
-    meetingRoomId INT REFERENCES MeetingRoom(id),
+    meetingRoomId INT REFERENCES MeetingRoom(id) NOT NULL,
     meetingName VARCHAR(255) NOT NULL,
     startDateTime TIMESTAMP WITH TIME ZONE NOT NULL,
     endDateTime TIMESTAMP WITH TIME ZONE NOT NULL

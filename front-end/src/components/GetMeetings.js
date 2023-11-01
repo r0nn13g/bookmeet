@@ -6,7 +6,7 @@ import "../styles/meetingroom-styles.css";
 // Importing environmental variable
 const API = process.env.REACT_APP_API_URL;
 
-const MeetingRooms = () => {
+const GetMeetings = () => {
   const [meetings, setMeetings] = useState([]);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const MeetingRooms = () => {
   );
 };
 
-export default MeetingRooms;
+export default GetMeetings;

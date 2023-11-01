@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/home-styles.css";
 import ButtonsGrouped from "../components/ButtonsGrouped";
-import MeetingRooms from "../components/MeetingRooms";
+import GetMeetings from "../components/GetMeetings";
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       </div>
       <div className="meeting-room-container">
         Available Rooms
-        <MeetingRooms />
+        <GetMeetings />
       </div>
     </div>
   )
