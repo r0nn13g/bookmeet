@@ -27,7 +27,7 @@ const MeetingRoomForm = () => {
   const addMeetingRoom = async () => {
     try {
       const response = await axios.post(`${API}/api/meeting-rooms`, meeting);
-      const createdMeeting = response.data; // Assuming the API returns the created meeting
+      const createdMeeting = response.data;
       setNewMeetings([...newMeetings, createdMeeting]);
       setSuccessMessage("Meeting room created successfully!");
     } catch (error) {
@@ -97,8 +97,7 @@ const MeetingRoomForm = () => {
         </div>
       )}
         <div>
-        <h2>Meetings</h2>
-        
+        <h2>Meeting Rooms</h2>
           {lastTwoMeetings.map((meeting) => (
             <MeetingRoomCard key={meeting.id} meeting={meeting} />
           ))}

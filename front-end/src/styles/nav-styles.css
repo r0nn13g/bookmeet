@@ -1,6 +1,15 @@
 .navbar-wrapper {
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-a {
-  text-decoration: none;
+.nav-items {
+  flex: 1;
+}
+
+.drawer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
