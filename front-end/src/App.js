@@ -7,6 +7,8 @@ import FourOhFour from './pages/FourOhFour.js';
 import ShowBookings from './pages/ShowBookings.js';
 import MeetingRoomById from './components/MeetingRoomById.js'
 import ShowOneBooking from './pages/ShowOneBooking.js'
+import GetMeetings from './components/GetMeetings';
+import MeetingRoomForm from './components/MeetingRoomForm';
 
 export default function App() {
   return (
@@ -15,9 +17,11 @@ export default function App() {
       <Routes>
         <Route path='*' element={<FourOhFour/>}/>
         <Route path='/' element={<Home />}/>
+        <Route path='/meeting-rooms' element={<GetMeetings/>}/>
         <Route path="/meeting-rooms/:meetingRoomId" element={<MeetingRoomById />}/>
         <Route path="/bookings" element={<ShowBookings />}/>
         <Route path="/bookings/:id" element={<ShowOneBooking />}/>
+        <Route path="/new-room" element={<MeetingRoomForm />}/>
       </Routes>
     </BrowserRouter>
   );

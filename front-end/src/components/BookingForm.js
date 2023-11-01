@@ -111,7 +111,7 @@ const BookingForm = () => {
           />
         </div>
 
-        <button type="submit">Create Meeting</button>
+        <button type="submit">Book</button>
       </form>
       {successMessage && (
         <div className="success-message">

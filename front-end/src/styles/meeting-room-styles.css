@@ -1,0 +1,36 @@
+
+.meeting-forms-wrapper{
+  text-align: center;
+  margin: 10px;
+  margin-top: 60px;
+}
+
+.meeting-name-forms{
+  margin: 10px;
+}
+
+.meeting-start-time-forms{
+  margin: 20px;
+
+}
+
+.meeting-end-time-forms{
+  margin: 10px;
+}
+
+.last-two-bookings-container{
+  margin: 10px;
+  border: 2px solid white;
+  background-color: rgb(51, 51, 51);
+  border-radius: 10px;
+}
+
+.last-two-meeting-names{
+  border-bottom: 2px solid white;
+  margin: 10px;
+}
+
+.last-two-bookings-container{
+  margin: 12px;
+  padding: 10px;
+}
