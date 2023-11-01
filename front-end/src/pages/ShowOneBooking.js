@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../styles/meetingroom-styles.css";
-// import MeetingRooms from "../components/MeetingRooms";
 
 //importing environmental variable
 const API = process.env.REACT_APP_API_URL;

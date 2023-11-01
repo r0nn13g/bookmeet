@@ -9,11 +9,13 @@ import MeetingRoomById from './components/MeetingRoomById.js'
 import ShowOneBooking from './pages/ShowOneBooking.js'
 import GetMeetings from './components/GetMeetings';
 import MeetingRoomForm from './components/MeetingRoomForm';
+import Buttons from './components/ButtonsGrouped';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Navbar/>
+      <Buttons />
       <Routes>
         <Route path='*' element={<FourOhFour/>}/>
         <Route path='/' element={<Home />}/>

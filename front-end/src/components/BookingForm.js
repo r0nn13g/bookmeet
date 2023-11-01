@@ -46,7 +46,7 @@ const BookingForm = () => {
     console.log(booking);
     try {
       await axios.post(`${API}/api/bookings`, { ...booking, booking });
-      setSuccessMessage("Booking created successfully!");
+      setSuccessMessage("Booked successfully!");
       console.log("success");
       fetchBookings();
     } catch (error) {

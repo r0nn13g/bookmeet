@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "../styles/video-styles.css";
+import "../styles/nav-styles.css";
 
 const NavBar = () => {
   return (
     <div className="navbar-wrapper" style={{backgroundColor:"Black", color: "gray"}}>
-      <Link to="/">
+      <Link to="/" className="home-btn-link">
         <b>
-          Blackstone®
+          Bookmeet
         </b>
       </Link>
     </div>

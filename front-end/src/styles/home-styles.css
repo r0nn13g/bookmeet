@@ -5,11 +5,16 @@
 
 .meeting-rooms-search{
   margin-top: 30px;
-  margin-bottom: 130px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .meeting-room-container{
-  margin-top: 420px;
+  margin-top: 20px;
   text-align: center;
+}
+
+.home-btn-link{
+  text-decoration: none; /* Remove the underline */
+  color: inherit; 
 }

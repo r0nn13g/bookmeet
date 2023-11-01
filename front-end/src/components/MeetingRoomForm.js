@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import '../styles/meetingroom-styles.css';
 import MeetingRoomCard from './MeetingRoomCard';
-import Buttons from './ButtonsGrouped';
 
 
 const MeetingRoomForm = () => {
@@ -57,7 +56,6 @@ const MeetingRoomForm = () => {
 
   return (
     <>
-      <Buttons/>
     <div className="meeting-forms-wrapper">
       <h2>Create New Meeting Room</h2>
       <form onSubmit={handleSubmit}>

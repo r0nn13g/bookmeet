@@ -1,12 +1,10 @@
 import React from "react";
-// import "../styles/video-styles.css";
-import ButtonsGrouped from "../components/ButtonsGrouped";
+import GetBookings from "../components/GetBookings";
 
 const ShowBookings = () => {
   return (
     <div>
-      <ButtonsGrouped />
-      ShowBookings
+      <GetBookings />
     </div>
   )
 };

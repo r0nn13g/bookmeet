@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import "../styles/meetingroom-styles.css";
 import PeopleIcon from '@mui/icons-material/People';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
-import ButtonsGrouped from "./ButtonsGrouped";
 import BookingForm from "./BookingForm";
 
 //importing environmental variable
@@ -28,7 +27,6 @@ const MeetingRoomById = () => {
   console.log(meeting)
             return(
               <>
-              <ButtonsGrouped/> 
               {meeting.map((meeting, id) => {
                  return(
                 <div className="meeting-rooms-wrapper">
