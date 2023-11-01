@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import '../styles/meeting-room-styles.css';
+import '../styles/meetingroom-styles.css';
 import MeetingRoomCard from './MeetingRoomCard';
 import Buttons from './ButtonsGrouped';
 

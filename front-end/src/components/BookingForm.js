@@ -26,7 +26,7 @@ function formatDate(inputDate) {
 const BookingForm = () => {
   const API = process.env.REACT_APP_API_URL;
   let { meetingRoomId } = useParams();
-  console.log(meetingRoomId);
+  console.log("meeting room id: ", meetingRoomId);
   const [booking, setBooking] =  useState({
     meetingroomid: meetingRoomId,
     meetingname: "",
@@ -73,9 +73,21 @@ const BookingForm = () => {
     fetchBookings(); // Fetch bookings when the component mounts
     // eslint-disable-next-line
   }, []); 
-  console.log(booking)
+  
+  const handleDelete = async (bookingid) => {
+    try {
+      await axios.delete(`${API}/api/bookings/${bookingid}`);
+      console.log("success")
+      fetchBookings();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log("Booking", booking)
   
   const lastTwoBookings = bookings.slice(-2).reverse();
+
 
   return (
     <div className="meeting-forms-wrapper">
@@ -122,6 +134,7 @@ const BookingForm = () => {
         <h2>Bookings</h2>
           {lastTwoBookings.map((item) => (
             <div className="last-two-bookings-container"key={item.bookingid}>
+              {console.log("booking id:", item.bookingid)}
               <div className='last-two-meeting-names'>
                 <h4>{item.meetingname}</h4>
               </div>
@@ -133,6 +146,8 @@ const BookingForm = () => {
               <AccessTimeIcon/>
               <b>{formatDate(item.enddatetime)}</b>
             </div>
+            <button onClick={() => handleDelete(item.bookingid)}
+             style={{margin: "5px", backgroundColor: "red", borderRadius:"20px", }}>delete</button>
             </div>
           ))}
       </div>
