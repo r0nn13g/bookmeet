@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import '../styles/booking-forms-styles.css';
-
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function formatDate(inputDate) {
   const date = new Date(inputDate);
@@ -17,14 +17,13 @@ function formatDate(inputDate) {
   const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
   // Format the date and time
-  const formattedDate = `${day}/${month}/${year}`;
+  const formattedDate = `${month}/${day}/${year}`;
   const formattedTime = `${hours}:${minutes} ${ampm}`;
 
   return `${formattedDate} ${formattedTime}`;
 }
 
 const BookingForm = () => {
-  // const navigate = useNavigate();
   const API = process.env.REACT_APP_API_URL;
   let { meetingRoomId } = useParams();
   console.log(meetingRoomId);
@@ -63,7 +62,6 @@ const BookingForm = () => {
       console.log(error);
     }
   };
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -129,10 +127,12 @@ const BookingForm = () => {
                 <h4>{item.meetingname}</h4>
               </div>
               <div className='last-two-start-dates'>
-              <b>Start:</b> {formatDate(item.startdatetime)}
+                <AccessTimeIcon/> 
+                <b>{formatDate(item.startdatetime)}</b>
             </div>
             <div className='last-two-end-dates'>
-              <b>End:</b> {formatDate(item.enddatetime)}
+              <AccessTimeIcon/>
+              <b>{formatDate(item.enddatetime)}</b>
             </div>
             </div>
           ))}

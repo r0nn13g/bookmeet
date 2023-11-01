@@ -10,13 +10,12 @@
 }
 
 .meeting-start-time-forms{
-  margin: 10px;
+  margin: 20px;
 
 }
 
 .meeting-end-time-forms{
   margin: 10px;
-
 }
 
 .last-two-bookings-container{
@@ -29,4 +28,9 @@
 .last-two-meeting-names{
   border-bottom: 2px solid white;
   margin: 10px;
+}
+
+.last-two-bookings-container{
+  margin: 12px;
+  padding: 10px;
 }

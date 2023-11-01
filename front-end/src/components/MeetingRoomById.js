@@ -5,14 +5,13 @@ import { useState, useEffect } from "react";
 import "../styles/meetingroom-styles.css";
 import PeopleIcon from '@mui/icons-material/People';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
-// import MeetingRooms from "../components/MeetingRooms";
-import ButtonsGrouped from "../components/ButtonsGrouped";
-import BookingForm from "../components/BookingForm";
+import ButtonsGrouped from "./ButtonsGrouped";
+import BookingForm from "./BookingForm";
 
 //importing environmental variable
 const API = process.env.REACT_APP_API_URL;
 
-const ShowOneRoom = () => {
+const MeetingRoomById = () => {
   const [meeting, setMeeting] = useState([]);
   let { meetingRoomId } = useParams();
 
@@ -58,4 +57,4 @@ const ShowOneRoom = () => {
               )
 };
 
-export default ShowOneRoom;
+export default MeetingRoomById;
