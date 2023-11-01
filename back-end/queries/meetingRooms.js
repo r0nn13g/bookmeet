@@ -11,9 +11,9 @@ const getAllMeetingRooms = async () => {
 };
 
 // Function to create a meeting room
-const createMeetingRoom = async (room) => {
+const createMeetingRoom = async (name, capacity, floor) => {
   try {
-    const newRoom = await db.one('INSERT INTO MeetingRoom (name, capacity, floor) VALUES ($1, $2, $3) RETURNING *', [room.name, room.capacity, room.floor]);
+    const newRoom = await db.one('INSERT INTO MeetingRoom (name, capacity, floor) VALUES ($1, $2, $3) RETURNING *', [name, capacity, floor]);
     return newRoom;
   } catch (error) {
     return error;

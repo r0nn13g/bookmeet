@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import '../styles/meeting-forms-styles.css';
 
 const MeetingForm = () => {
   const navigate = useNavigate();
   const API = process.env.REACT_APP_API_URL;
+  let { meetingRoomId } = useParams();
+  console.log(meetingRoomId);
   const [booking, setBooking] =  useState({
     meetingname: "",
     startdatetime: "",
@@ -17,32 +19,17 @@ const MeetingForm = () => {
     setBooking({ ...booking, [e.target.name]: e.target.value });
   };
 
-  const formatDateTime = (dateTimeString) => {
-    const date = new Date(dateTimeString);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 || 12;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    return `${formattedHours}:${formattedMinutes} ${ampm}`;
-  };
-
-  const addBooking = (newBooking) => {
-    // Format the date and time fields before sending them to the API
-    const formattedBooking = {
-      ...newBooking,
-      startdatetime: formatDateTime(newBooking.startdatetime),
-      enddatetime: formatDateTime(newBooking.enddatetime),
-    };
-
-    axios.post(`${API}/bookings`, formattedBooking)
-      .then(() => navigate("/bookings"));
-  }
+    const addBooking = (booking) =>{
+      console.log(booking);
+    axios.post(`${API}/bookings`,  {...booking, meetingRoomId} )
+      .then(() =>  console.log("success"))
+      .catch((error) => console.log(error))
+    }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     addBooking(booking);
-    console.log(booking.meetingname)
+    console.log(booking.startdatetime)
   };
 
   return (

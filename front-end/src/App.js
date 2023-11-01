@@ -19,7 +19,7 @@ export default function App() {
         <Route path='/' element={<Home />}/>
         <Route path="/meeting-rooms" element={<ShowRooms />}/>
         <Route path="/bookings" element={<ShowBookings />}/>
-        <Route path="/meeting-rooms/:roomid" element={<ShowOneRoom />}/>
+        <Route path="/meeting-rooms/:meetingRoomId" element={<ShowOneRoom />}/>
         <Route path="/bookings/:id" element={<ShowOneBooking />}/>
       </Routes>
     </BrowserRouter>

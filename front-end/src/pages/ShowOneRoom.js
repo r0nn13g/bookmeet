@@ -14,17 +14,17 @@ const API = process.env.REACT_APP_API_URL;
 
 const ShowOneRoom = () => {
   const [meeting, setMeeting] = useState([]);
-  let { roomid } = useParams();
+  let { meetingRoomId } = useParams();
 
   useEffect(() => {
-    axios.get(`${API}/api/meeting-rooms/${roomid}`)
+    axios.get(`${API}/api/meeting-rooms/${meetingRoomId}`)
       .then((res) => {
           setMeeting(res.data);
         },
         (error) => console.log("get", error)
       )
       .catch((c) => console.warn("catch", c));
-  }, [roomid]);
+  }, [meetingRoomId]);
 
   console.log(meeting)
             return(

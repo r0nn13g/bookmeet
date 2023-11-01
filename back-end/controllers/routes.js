@@ -105,9 +105,10 @@ bookingsRouter.get('/:id', async (req, res) => {
 
 // Create a booking for a meeting room
 bookingsRouter.post('/', async (req, res) => {
-  const {meetingname, startdatetime, enddatetime } = req.body;
+  const { meetingroomid, meetingname, startdatetime, enddatetime } = req.body;
+  console.log("Body",req.body);
   try {
-    const newBooking = await bookMeetingRoom(meetingname, startdatetime, enddatetime)
+    const newBooking = await bookMeetingRoom( meetingroomid, meetingname, startdatetime, enddatetime )
     res.status(201).json(newBooking);
   } catch (error) {
     errorHandler(res, error);
