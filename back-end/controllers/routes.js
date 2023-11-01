@@ -54,25 +54,16 @@ roomsRouter.get('/:id', async (req, res) => {
   }
 });
 
-
-//Retrieve all future bookings of a meeting room
+//get a booking by meeting-room 
 roomsRouter.get('/:id/bookings', async (req, res) => {
   const roomId = req.params.id;
+  const currentDate = new Date();
   try {
-    // First, get the meeting room details
-    const meetingRoom = await getOneMeeting(roomId);
+    const futureBookings = await getFutureBookingsForRoom(roomId, currentDate);
 
-    if (meetingRoom) {
-      // Now, retrieve future bookings for the meeting room
-      const currentDate = new Date();
-      const futureBookings = await getFutureBookingsForRoom(roomId, currentDate);
-      console.log(futureBookings);
-      res.status(200).json(futureBookings);
-    } else {
-      res.status(404).json({ error: 'Meeting room not found' });
-    }
+    res.json(futureBookings);
   } catch (error) {
-    errorHandler(res, error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

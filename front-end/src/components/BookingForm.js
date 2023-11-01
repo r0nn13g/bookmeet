@@ -8,7 +8,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 function formatDate(inputDate) {
   const date = new Date(inputDate);
   
-  // Get the day, month, year, hours, and minutes
+  // Get the day, month, year, hours, and o
   const day = date.getDate().toString().padStart(2, '0');
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const year = date.getFullYear();
@@ -120,7 +120,6 @@ const BookingForm = () => {
       )}
         <div>
         <h2>Bookings</h2>
-        
           {lastTwoBookings.map((item) => (
             <div className="last-two-bookings-container"key={item.bookingid}>
               <div className='last-two-meeting-names'>
