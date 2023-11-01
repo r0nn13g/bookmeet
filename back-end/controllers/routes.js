@@ -115,7 +115,6 @@ bookingsRouter.post('/', async (req, res) => {
   }
 });
 
-
 //Cancel a booking by id
 bookingsRouter.delete('/:id', async (req, res) => {
   const bookingId = req.params.id;
