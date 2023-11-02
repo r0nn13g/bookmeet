@@ -15,6 +15,7 @@
 }
 
 .home-btn-link{
+  margin: 10px;
   text-decoration: none; /* Remove the underline */
   color: inherit; 
 }
