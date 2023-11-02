@@ -1,7 +1,7 @@
 const express = require('express');
 const roomsRouter = express.Router();
 const bookingsRouter = express.Router();
-const db = require('../dbConfig.js');
+const db = require('../db/dbConfig.js');
 const { getAllMeetingRooms,createMeetingRoom, getOneMeeting, getFutureBookingsForRoom } = require("../queries/meetingRooms.js");
 const { getAllBookings, bookMeetingRoom, getBookingById, cancelBooking } = require("../queries/bookings.js");
 
