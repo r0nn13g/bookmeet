@@ -6,14 +6,17 @@ BookMeet is a web application built with the PERN (PostgreSQL, Express, React, N
 ***Prerequisites***
 Before you begin, ensure you have the following software installed on your system:
 
+Node.js
 ```
-Node.js: Download and Install Node.js
+ Download and Install Node.js
 ```
+PostgreSQL
 ```
-PostgreSQL: Download and Install PostgreSQL
+ Download and Install PostgreSQL
 ```
+Git
 ```
-Git: Download and Install Git
+ Download and Install Git
 ```
 Clone the Repository
 ```
