@@ -5,7 +5,7 @@ import TemporaryDrawer from "./TemporaryDrawer";
 
 const NavBar = () => {
   return (
-    <div className="navbar-wrapper" style={{backgroundColor:"Black", color: "white"}}>
+    <div className="navbar-wrapper" style={{backgroundColor:"black", color: "white"}}>
       <Link to="/" className="home-btn-link">
         <b>
           Bookmeet
