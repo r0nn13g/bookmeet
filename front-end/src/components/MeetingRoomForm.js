@@ -76,6 +76,7 @@ const MeetingRoomForm = () => {
             name="capacity"
             value={meeting.capacity}
             onChange={handleChange}
+            max="20"
           />
         </div>
 
@@ -86,6 +87,7 @@ const MeetingRoomForm = () => {
             name="floor"
             value={meeting.floor}
             onChange={handleChange}
+            max="40"
           />
         </div>
 

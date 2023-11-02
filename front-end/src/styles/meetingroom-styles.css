@@ -17,7 +17,7 @@
 .meeting-rooms-desc-container{
   grid-area: description;
   text-decoration: none;
-  padding: 5px;
+  padding: 10px;
   border-bottom: 2px solid gray;
   border-radius: 6px;
   text-align: center;

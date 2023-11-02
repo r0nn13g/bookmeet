@@ -6,10 +6,11 @@ const Home = () => {
   return (
     <div className="home-wrapper">
       <div className="meeting-room-container">
-        Available Rooms
+        <h3>Available Rooms</h3>
         <GetMeetings />
-        <p style={{fontSize: '12px', margin:'10px'}}>Please select a room to book a new meeting for that room.</p>
+        <b style={{fontSize: '12px', margin:'10px', color: "white", textAlign: "center"}}>Please select a room to book a new meeting for that room.</b>
       </div>
+      <img id="home-splash-img" src="https://i.imgur.com/nQXRBQa.jpg" alt="Home Splash" />
     </div>
   )
 };
