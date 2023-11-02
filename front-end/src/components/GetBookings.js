@@ -20,7 +20,9 @@ const GetBookings = () => {
       <>
       <h2 style={{textAlign: "center"}}>Bookings</h2>
       {bookings.map((oneBooking) => (
-        <BookingRoomCard key={oneBooking.id} oneBooking={oneBooking} />
+        <div>
+          <BookingRoomCard key={oneBooking.id} oneBooking={oneBooking} />
+        </div>
         ))}
     </>
   );
