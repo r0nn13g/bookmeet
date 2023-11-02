@@ -18,6 +18,13 @@ Git
 ```
  Download and Install Git
 ```
+Dependencies
+```
+npm i axios
+npm i react-router-dom@latest
+npm install @mui/material @emotion/react @emotion/styled
+```
+
 Clone the Repository
 ```
 git clone https://github.com/your-username/bookmeet.git
