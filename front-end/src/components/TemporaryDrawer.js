@@ -39,11 +39,11 @@ export default function TemporaryDrawer() {
               <b> + Bookings</b>
             </Link>
           </ListItem>
-          <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none' }} >
+          {/* <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none' }} >
               <Link to="/book" style={{ textDecoration: 'none' , color: 'white' }}>
               <b> + Create New Booking</b>
               </Link>
-          </ListItem>
+          </ListItem> */}
           <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none' }} >
               <Link to="/new-room" style={{ textDecoration: 'none' , color: 'white' }}>
               <b> + Create New Meeting Room</b>

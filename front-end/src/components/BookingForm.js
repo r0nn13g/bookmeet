@@ -131,7 +131,9 @@ const BookingForm = () => {
         </div>
       )}
         <div>
+            Bookings
           {lastTwoBookings.map((item) => (
+            
             <div className="last-two-bookings-container"key={item.bookingid}>
               {console.log("booking id:", item.bookingid)}
               <div className='last-two-meeting-names'>
