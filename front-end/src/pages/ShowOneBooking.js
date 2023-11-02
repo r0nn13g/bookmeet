@@ -1,5 +1,5 @@
 import React from "react";
-import GetBookingById from "../components/GetBookingById";
+import GetBookingById from "../components/BookingById";
 
 const ShowOneBooking = () => {
   return (
