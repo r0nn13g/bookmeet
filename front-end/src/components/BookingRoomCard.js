@@ -22,7 +22,7 @@ const BookingRoomCard = ({ oneBooking }) => {
   }
   console.log(oneBooking)
   return (
-    <Link className="booking-room-link" to={`/booking-rooms/${oneBooking.bookingid}`}>
+    <Link className="booking-room-link" to={`/bookings/${oneBooking.bookingid}`}>
       <div className="booking-rooms-wrapper">
         <div className="booking-meetingname-container">
           <b id="booking-room-desc">{oneBooking.meetingname}</b>
