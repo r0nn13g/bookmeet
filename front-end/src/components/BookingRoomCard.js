@@ -42,14 +42,14 @@ const BookingRoomCard = ({ oneBooking }) => {
         </div>
         <div className="booking-startdate-container">
           {/* <PeopleIcon /> */}
-          <b id="booking-room-startdate">Start:{formatDate(oneBooking.startdatetime)}</b>
+          <b id="booking-room-startdate">{formatDate(oneBooking.startdatetime)}</b>
         </div>
         <div className="booking-enddate-container">
           {/* <CorporateFareIcon /> */}
-          <b id="booking-room-enddate">End: {formatDate(oneBooking.enddatetime)}</b>
+          <b id="booking-room-enddate">{formatDate(oneBooking.enddatetime)}</b>
         </div>
         <div className="delete-btn">
-          <button  onClick={() => handleDelete(oneBooking.bookingid)}>delete</button>
+          <button  onClick={() => handleDelete(oneBooking.bookingid)}>cancel</button>
         </div>
       </div>
     /* </Link> */
