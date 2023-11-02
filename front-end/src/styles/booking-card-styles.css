@@ -2,7 +2,8 @@
   display: grid;
   grid-template-areas:
   "description description"
-    "capacity floors";
+    "capacity capacity"
+    "floors floors";
   grid-template-columns: 1fr 1fr;
   margin-top: 20px;
   margin-left: 20px;
@@ -40,6 +41,7 @@
   grid-area: floors;
   padding: 5px;
   border-radius: 6px;
+  text-align: center;
 }
 
 #booking-room-enddate{
