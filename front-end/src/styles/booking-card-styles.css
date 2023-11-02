@@ -2,7 +2,9 @@
   display: grid;
   grid-template-areas:
     "description description delete"
-    "start end delete";
+    "start start delete"
+    "end end delete";
+
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px; /* Added to create spacing between grid items */
   margin: 20px;
@@ -16,19 +18,26 @@
 
 .booking-meetingname-container {
   grid-area: description;
-  padding: 5px;
   border-bottom: 2px solid gray;
+  margin: 10px;
+}
+
+#booking-room-desc{
+  margin: 5px;
 }
 
 .booking-startdate-container {
   grid-area: start;
   white-space: nowrap;
-  padding-bottom: 10px;
+  margin: 0px;
+  padding: 0px;
+  /* padding-bottom: 10px; */
   border-radius: 6px;
 }
 
 #booking-room-startdate {
-  font-size: 12px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .booking-enddate-container {
@@ -39,7 +48,8 @@
 }
 
 #booking-room-enddate {
-  font-size: 12px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .delete-btn {

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import '../styles/booking-forms-styles.css';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import '../styles/booking-card-styles.css';
 
 function formatDate(inputDate) {
   const date = new Date(inputDate);
@@ -86,15 +86,15 @@ const BookingForm = () => {
 
   console.log("Booking", booking)
   
-  const lastTwoBookings = bookings.slice(-2).reverse();
+  const lastTwoBookings = bookings.slice(-3).reverse();
 
 
   return (
     <div className="meeting-forms-wrapper">
-      <h2 style={{color: 'gray'}}>Book a meeting.</h2>
+      <h2 style={{color:'gray'}}>Book a meeting.</h2>
       <form onSubmit={handleSubmit}>
         <div className="meeting-name-forms">
-          <label>Meeting Name: </label>
+          <label>Meeting name: </label>
           <input
             type="text"
             name="meetingname"
@@ -130,25 +130,27 @@ const BookingForm = () => {
           <p style={{color: "green"}}>{successMessage}</p>
         </div>
       )}
-        <div>
-            Bookings
+        <div className='bookings' style={{marginTop: "50px"}}>
           {lastTwoBookings.map((item) => (
             
-            <div className="last-two-bookings-container"key={item.bookingid}>
+            <div className="booking-rooms-wrapper"key={item.bookingid}>
               {console.log("booking id:", item.bookingid)}
-              <div className='last-two-meeting-names'>
-                <h4>{item.meetingname}</h4>
+              <div className='booking-meetingname-container'>
+                <b id="booking-room-desc">{item.meetingname}</b>
               </div>
-              <div className='last-two-start-dates'>
-                <AccessTimeIcon/> 
-                <b>{formatDate(item.startdatetime)}</b>
+              <div className='booking-startdate-container'>
+                {/* <AccessTimeIcon/>  */}
+                <h4 id="booking-room-startdate">{formatDate(item.startdatetime)}</h4>
             </div>
-            <div className='last-two-end-dates'>
-              <AccessTimeIcon/>
-              <b>{formatDate(item.enddatetime)}</b>
+            <div className='booking-enddate-container'>
+              {/* <AccessTimeIcon/>
+         */}
+              <h4 id="booking-room-enddate">{formatDate(item.enddatetime)}</h4>
             </div>
+            <div className="delete-btn">
             <button onClick={() => handleDelete(item.bookingid)}
-             style={{margin: "5px", backgroundColor: "red", borderRadius:"20px", }}>delete</button>
+             style={{ borderRadius:"10px"}}>cancel</button>
+             </div>
             </div>
           ))}
       </div>
