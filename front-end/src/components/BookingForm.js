@@ -91,10 +91,10 @@ const BookingForm = () => {
 
   return (
     <div className="meeting-forms-wrapper">
-      <h1>Book Meeting Room</h1>
+      <h2 style={{color: 'gray'}}>Book a meeting.</h2>
       <form onSubmit={handleSubmit}>
         <div className="meeting-name-forms">
-          <label>Meeting Name:</label>
+          <label>Meeting Name: </label>
           <input
             type="text"
             name="meetingname"
@@ -104,7 +104,7 @@ const BookingForm = () => {
         </div>
 
         <div className="meeting-start-time-forms">
-          <label>Start:</label>
+          <label>Start: </label>
           <input
             type="datetime-local"
             name="startdatetime"
@@ -114,7 +114,7 @@ const BookingForm = () => {
         </div>
 
         <div className="meeting-end-time-forms">
-          <label>End:</label>
+          <label>End: </label>
           <input
             type="datetime-local"
             name="enddatetime"
@@ -131,7 +131,6 @@ const BookingForm = () => {
         </div>
       )}
         <div>
-        <h2>Bookings</h2>
           {lastTwoBookings.map((item) => (
             <div className="last-two-bookings-container"key={item.bookingid}>
               {console.log("booking id:", item.bookingid)}
