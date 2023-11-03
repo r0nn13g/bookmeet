@@ -19,8 +19,8 @@
 
 .last-two-bookings-container{
   /* margin: 10px; */
-  border: 2px solid white;
-  background-color: rgb(51, 51, 51);
+  border: 2px solid black;
+  /* background-color: rgb(51, 51, 51); */
   border-radius: 10px;
 }
 

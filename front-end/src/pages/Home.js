@@ -10,7 +10,6 @@ const Home = () => {
         <GetMeetings />
         <b style={{fontSize: '12px', margin:'10px', color: "white", textAlign: "center"}}>Please select a room to book a new meeting for that room.</b>
       </div>
-      <img id="home-splash-img" src="https://i.imgur.com/nQXRBQa.jpg" alt="Home Splash" />
     </div>
   )
 };

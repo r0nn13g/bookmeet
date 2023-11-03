@@ -29,33 +29,39 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
+          ÷
           <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none'  }} >
-            <Link to="/meeting-rooms" style={{textDecoration: 'none' , color: 'white' }}>
-              <b> + Meeting Rooms</b>
+            <Link to="/" style={{textDecoration: 'none' , color: 'black' }}>
+              <b> + Home</b>
             </Link>
           </ListItem>
           <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none'  }} >
-            <Link to="/bookings" style={{ textDecoration: 'none' , color: 'white' }}>
+            <Link to="/bookings" style={{ textDecoration: 'none' , color: 'black' }}>
               <b> + Bookings</b>
             </Link>
           </ListItem>
-          {/* <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none' }} >
-              <Link to="/book" style={{ textDecoration: 'none' , color: 'white' }}>
-              <b> + Create New Booking</b>
-              </Link>
-          </ListItem> */}
+          <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none'  }} >
+            <Link to="/book" style={{ textDecoration: 'none' , color: 'black' }}>
+              <b> + Book</b>
+            </Link>
+          </ListItem>
           <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none' }} >
-              <Link to="/new-room" style={{ textDecoration: 'none' , color: 'white' }}>
+              <Link to="/meeting-rooms" style={{ textDecoration: 'none' , color: 'black' }}>
+              <b> + Meeting Rooms</b>
+              </Link>
+          </ListItem>
+          <ListItem style={{ display: 'flex', justifyContent: 'flex-end', textDecoration: 'none' }} >
+              <Link to="/new-room" style={{ textDecoration: 'none' , color: 'black' }}>
               <b> + Create New Meeting Room</b>
               </Link>
           </ListItem>
       </List>
       <ListItem style={{ display: 'flex', justifyContent: 'flex-end' }} >
-          <a href="https://www.github.com/r0nn13g" style={{ textDecoration: 'none' , color: 'white'}}>
+          <a href="https://www.github.com/r0nn13g" style={{ textDecoration: 'none' , color: 'black'}}>
             <h5>Bookmeet - Created by Ronnie Garcia</h5>
           </a>
             &nbsp; &nbsp;&nbsp;
-              <GitHubIcon style={{fill: 'white'}}/>
+              <GitHubIcon style={{fill: 'black'}}/>
       </ListItem>
     </Box>
   );
@@ -64,12 +70,12 @@ export default function TemporaryDrawer() {
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button id="nav-drawer-button" onClick={toggleDrawer(anchor, true)}> 
-            <MenuIcon id="menu-icon" style={{ color: 'white' }} />
+            <MenuIcon id="menu-icon" style={{ color: 'black' }} />
           </Button>
           <Drawer
             PaperProps={{
             sx: {
-              backgroundColor: "#1b1b1be4",
+            
               margin: '0px',
             }
             }}
