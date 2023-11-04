@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import "../styles/meetingroom-styles.css";
 import PeopleIcon from '@mui/icons-material/People';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
-// import BookingForm from "./BookingForm";
+import BookingForm from "./BookingForm";
 
 //importing environmental variable
 const API = process.env.REACT_APP_API_URL;
@@ -50,7 +50,7 @@ const MeetingRoomById = () => {
                 </div>
                     )
                   })}
-                  {/* <BookingForm/>      */}
+                  <BookingForm/>     
                   </>
               )
 };

@@ -8,7 +8,7 @@ const NavBar = () => {
     <div className="navbar-wrapper" style={{border: "2px solid black"}}>
       <Link to="/" className="home-btn-link">
         <b>
-          Bookmeet
+         home
         </b>
       </Link>
       <div className="drawer">
