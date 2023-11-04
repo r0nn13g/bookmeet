@@ -16,6 +16,8 @@ const GetMeetings = () => {
       .catch((error) => console.error("Error:", error));
   }, []);
 
+  console.log(meetings)
+
   return (
     <>
       {meetings.map((meeting) => (
