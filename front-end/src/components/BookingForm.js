@@ -139,7 +139,7 @@ const BookingForm = () => {
         <button type="submit">Book</button>
       </form>
    
-      {errorMessage && ( // Display error message if there's an error
+      {errorMessage && ( 
         <div className="error-message">
           <p style={{ color: "red" }}>{errorMessage}</p>
         </div>

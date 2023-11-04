@@ -1,10 +1,12 @@
 import React from "react";
 import "../styles/home-styles.css";
 import GetMeetings from "../components/GetMeetings";
+import MeetingRoomSearch from "../components/MeetingRoomSearch";
 
 const Home = () => {
   return (
     <div className="home-wrapper">
+        <MeetingRoomSearch/>
       <div className="meeting-room-container">
         <h3>Available Meeting Rooms</h3>
         <GetMeetings />
