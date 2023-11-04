@@ -1,9 +1,9 @@
-import React from 'react';
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
+import React from 'react';
 import '../styles/booking-forms-styles.css';
 import '../styles/booking-card-styles.css';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function formatDate(inputDate) {
   const date = new Date(inputDate);

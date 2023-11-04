@@ -52,6 +52,15 @@ const MeetingRoomForm = () => {
     addMeetingRoom();
   };
 
+  const deleteMeetingRoom = async (meetingId) => {
+    try {
+      await axios.delete(`${API}/api/meeting-rooms/${meetingId}`);
+      setNewMeetings(newMeetings.filter(meeting => meeting.id !== meetingId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     const fetchNewMeetings = async () => {
       try {
@@ -64,7 +73,7 @@ const MeetingRoomForm = () => {
     fetchNewMeetings();
   }, [API]);
 
-  const lastTwoMeetings = newMeetings.slice(-2).reverse();
+  const lastThreeMeetings = newMeetings.slice(-3).reverse();
 
   return (
     <div className="meeting-forms-wrapper">
@@ -116,8 +125,8 @@ const MeetingRoomForm = () => {
       )}
       <div>
         <h2>Meeting Rooms</h2>
-        {lastTwoMeetings.map((meeting) => (
-          <MeetingRoomCard key={meeting.id} meeting={meeting} />
+        {lastThreeMeetings.map((meeting) => (
+          <MeetingRoomCard key={meeting.id} meeting={meeting} onDelete={deleteMeetingRoom} />
         ))}
       </div>
     </div>
