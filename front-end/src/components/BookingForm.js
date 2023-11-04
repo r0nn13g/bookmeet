@@ -36,7 +36,7 @@ const BookingForm = () => {
 
   const [successMessage, setSuccessMessage] = useState("");
   const [bookings, setBookings] = useState([]);
-
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setBooking({ ...booking, [e.target.name]: e.target.value });
@@ -44,9 +44,22 @@ const BookingForm = () => {
 
   const addBooking = async (booking) => {
     console.log(booking);
+    const roomExists = bookings.some((item) => item.meetingname === booking.meetingname);
+    
+    if (roomExists) {
+      setErrorMessage("Room name already exists");
+      return;
+    }
+
+    if (!booking.meetingname || !booking.startdatetime || !booking.enddatetime) {
+      setErrorMessage("Please fill out all fields");
+      return;
+    }
+
     try {
       await axios.post(`${API}/api/bookings`, { ...booking, booking });
       setSuccessMessage("Booked successfully!");
+      setErrorMessage("");
       console.log("success");
       fetchBookings();
     } catch (error) {
@@ -125,11 +138,19 @@ const BookingForm = () => {
 
         <button type="submit">Book</button>
       </form>
-      {successMessage && (
-        <div className="success-message">
-          <p style={{color: "green"}}>{successMessage}</p>
+   
+      {errorMessage && ( // Display error message if there's an error
+        <div className="error-message">
+          <p style={{ color: "red" }}>{errorMessage}</p>
         </div>
       )}
+
+      {successMessage && (
+        <div className="success-message">
+          <p style={{ color: "green" }}>{successMessage}</p>
+        </div>
+      )}
+
         <div className='bookings' style={{marginTop: "50px"}}>
           {lastTwoBookings.map((item) => (
             

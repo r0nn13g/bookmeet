@@ -1,10 +1,8 @@
-import React from 'react';
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import '../styles/meetingroom-styles.css';
 import MeetingRoomCard from './MeetingRoomCard';
-
 
 const MeetingRoomForm = () => {
   const API = process.env.REACT_APP_API_URL;
@@ -19,17 +17,31 @@ const MeetingRoomForm = () => {
 
   const [successMessage, setSuccessMessage] = useState("");
   const [newMeetings, setNewMeetings] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setMeeting({ ...meeting, [e.target.name]: e.target.value });
   };
 
   const addMeetingRoom = async () => {
+    const roomExists = newMeetings.some((item) => item.name === meeting.name);
+
+    if (roomExists) {
+      setErrorMessage("Meeting room name already exists");
+      return;
+    }
+
+    if (!meeting.name || meeting.capacity === 0 || meeting.floor === 0) {
+      setErrorMessage("Please fill out all fields");
+      return;
+    }
+
     try {
       const response = await axios.post(`${API}/api/meeting-rooms`, meeting);
       const createdMeeting = response.data;
       setNewMeetings([...newMeetings, createdMeeting]);
       setSuccessMessage("Meeting room created successfully!");
+      setErrorMessage("");
     } catch (error) {
       console.error(error);
     }
@@ -55,7 +67,6 @@ const MeetingRoomForm = () => {
   const lastTwoMeetings = newMeetings.slice(-2).reverse();
 
   return (
-    <>
     <div className="meeting-forms-wrapper">
       <h2>Create New Meeting Room</h2>
       <form onSubmit={handleSubmit}>
@@ -93,20 +104,24 @@ const MeetingRoomForm = () => {
 
         <button type="submit">Create</button>
       </form>
+      {errorMessage && ( // Display error message if there's an error
+        <div className="error-message">
+          <p style={{color: "red"}}>{errorMessage}</p>
+        </div>
+      )}
       {successMessage && (
         <div className="success-message">
           <p style={{color: "green"}}>{successMessage}</p>
         </div>
       )}
-        <div>
+      <div>
         <h2>Meeting Rooms</h2>
-          {lastTwoMeetings.map((meeting) => (
-            <MeetingRoomCard key={meeting.id} meeting={meeting} />
-          ))}
+        {lastTwoMeetings.map((meeting) => (
+          <MeetingRoomCard key={meeting.id} meeting={meeting} />
+        ))}
       </div>
     </div>
-    </>
   );
-}
+};
 
 export default MeetingRoomForm;
