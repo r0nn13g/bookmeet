@@ -24,7 +24,7 @@ const MeetingRoomSearch = () => {
 
   useEffect(() => {
     // Check if input matches meetings.capacity and floor.capacity
-    const isMatchingCapacity = meetingRooms.some((room) => room.capacity === capacity);
+    const isMatchingCapacity = meetingRooms.some((room) => room.capacity <= capacity);
     const isMatchingFloor = meetingRooms.some((room) => room.floor === floor);
 
     // Check if input is within the valid range (0 to max integer)
@@ -47,6 +47,8 @@ const MeetingRoomSearch = () => {
         type="number"
         value={capacity}
         onChange={(e) => setCapacity(Number(e.target.value))}
+        min="0"
+        max="20"
       />
     </div>
     <div>
@@ -55,6 +57,8 @@ const MeetingRoomSearch = () => {
         type="number"
         value={floor}
         onChange={(e) => setFloor(Number(e.target.value))}
+        min="0"
+        max="40"
       />
     </div>
     <div>
