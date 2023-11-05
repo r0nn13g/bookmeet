@@ -23,20 +23,21 @@ const MeetingRoomSearch = () => {
   }, [API]);
 
   useEffect(() => {
-    // Check if input matches meetings.capacity and floor.capacity
-    const isMatchingCapacity = meetingRooms.some((room) => room.capacity <= capacity);
-    const isMatchingFloor = meetingRooms.some((room) => room.floor === floor);
+  
+// Filter meeting rooms where both capacity and floor match
+const matchingRooms = meetingRooms.filter((room) => room.capacity >= capacity && room.floor === floor);
 
-    // Check if input is within the valid range (0 to max integer)
-    const isWithinRange = capacity >= 0 && floor >= 0 && Number.isInteger(capacity) && Number.isInteger(floor);
+// Check if input is within the valid range (0 to max integer)
+const isWithinRange = capacity >= 0 && floor >= 0 && Number.isInteger(capacity) && Number.isInteger(floor);
 
-    // Set notification based on the conditions
-    if (isMatchingCapacity && isMatchingFloor && isWithinRange) {
-      setNotification('Meeting room available');
-    } else {
-      setNotification('A meeting room with these requirements is not available');
-    }
+// Set notification based on the conditions
+if (matchingRooms.length > 0 && isWithinRange) {
+  setNotification('Meeting room available');
+} else {
+  setNotification('A meeting room with these requirements is not available');
+}
   }, [capacity, floor, meetingRooms]);
+  
 
   return (
     <div style={{ textAlign: 'center', margin: '10px' }}>
@@ -58,11 +59,11 @@ const MeetingRoomSearch = () => {
         value={floor}
         onChange={(e) => setFloor(Number(e.target.value))}
         min="0"
-        max="40"
+        max={floor}
       />
     </div>
     <div>
-     {notification}
+     <h4>{notification}</h4>
     </div>
   </div>
   );
