@@ -89,6 +89,3 @@ Book a meeting room.
 View upcoming bookings.
 Delete bookings.
 
-
-![bookmeet_mobile](https://github.com/r0nn13g/Meeting-app-take-home-challenge/assets/86433181/2697420c-2db7-4b41-815e-dfb3acb909a5)
-
