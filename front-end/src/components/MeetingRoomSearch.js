@@ -43,16 +43,6 @@ if (matchingRooms.length > 0 && isWithinRange) {
     <div style={{ textAlign: 'center', margin: '10px' }}>
     <h2>Meeting Room Search</h2>
     <div style={{ textAlign: 'center', margin: '20px' }}>
-      <label>Capacity:</label>
-      <input
-        type="number"
-        value={capacity}
-        onChange={(e) => setCapacity(Number(e.target.value))}
-        min="0"
-        max="20"
-      />
-    </div>
-    <div>
       <label>Floor:</label>
       <input
         type="number"
@@ -60,6 +50,16 @@ if (matchingRooms.length > 0 && isWithinRange) {
         onChange={(e) => setFloor(Number(e.target.value))}
         min="0"
         max={floor}
+      />
+    </div>
+    <div>
+      <label>Capacity:</label>
+      <input
+        type="number"
+        value={capacity}
+        onChange={(e) => setCapacity(Number(e.target.value))}
+        min="0"
+        max="20"
       />
     </div>
     <div>
